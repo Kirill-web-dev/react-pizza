@@ -1,16 +1,15 @@
 import React from "react";
 
-export default function Sorting() {
+export default function Sorting({ sortValue, onChangeSort }) {
     const [openPopUp, setOpenPopUp] = React.useState(false);
-    const [sortParam, setSortParam] = React.useState(0);
-    const listSortParams = ["популярности", "цене", "алфавиту"];
+    const listSortParams = [
+        { name: "цене ↑", sortProperty: "-price"}, 
+        { name: "цене ↓", sortProperty: "price"}, 
+        { name: "популярности",  sortProperty: "rating"}, 
+    ];
 
     const onSelectSortParam = (index) => {
-        setSortParam(index);
-        setOpenPopUp(!openPopUp)
-    };
-
-    const onClickOpenPopUp = () => {
+        onChangeSort(index);
         setOpenPopUp(!openPopUp)
     };
 
@@ -29,23 +28,21 @@ export default function Sorting() {
                         fill="#2C2C2C"
                     />
                 </svg>
-                <div className="sort__by" onClick={onClickOpenPopUp}>
+                <div className="sort__by" onClick={() => setOpenPopUp(!openPopUp)}>
                     <b>Сортировка по:</b>
-                    <span>{listSortParams[sortParam]}</span>
+                    <span>{sortValue.name}</span>
                 </div>
             </div>
             {openPopUp && (
                 <div className="sort__popup">
                     <ul>
-                        {listSortParams.map((Param, index) => (
+                        {listSortParams.map((obj, index) => (
                             <li
                                 key={index}
-                                className={
-                                    sortParam === index ? "active" : null
-                                }
-                                onClick={() => onSelectSortParam(index)}
+                                className={sortValue.sortProperty === obj.sortProperty ? "active" : null}
+                                onClick={() => onSelectSortParam(obj)}
                             >
-                                {Param}
+                                {obj.name}
                             </li>
                         ))}
                     </ul>

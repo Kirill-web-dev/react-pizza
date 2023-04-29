@@ -1,8 +1,7 @@
 import React from "react";
 
-export default function Categories() {
-    const [selectCategory, setSelectCategory] = React.useState();
-    const listCategoryTitles = [ 
+export default function Categories({ categoryValue, onChangeCategory }) {
+    const listOfCategories = [ 
         "Все", 
         "Мясные", 
         "Вегетарианская", 
@@ -11,18 +10,14 @@ export default function Categories() {
         "Закрытые",
     ];
 
-    const onClickCategory = (index) => {
-        setSelectCategory(index)
-    };
-
     return (
         <div className="categories">
             <ul>
-                {listCategoryTitles.map((categoryTitle, index) => (
+                {listOfCategories.map((categoryTitle, index) => (
                     <li
                         key={index}
-                        onClick={() => onClickCategory(index)}
-                        className={selectCategory === index ? "active" : null}
+                        onClick={() => onChangeCategory(index)}
+                        className={categoryValue === index ? "active" : null}
                     >
                         {categoryTitle}
                     </li>
