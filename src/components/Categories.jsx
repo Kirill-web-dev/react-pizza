@@ -5,9 +5,8 @@ export default function Categories({ categoryValue, onChangeCategory }) {
         "Все", 
         "Мясные", 
         "Вегетарианская", 
-        "Гриль", 
+        "Гриль",
         "Острые", 
-        "Закрытые",
     ];
 
     return (

@@ -10,7 +10,7 @@ export default function Search() {
         <div className={Styles.root}>
             <svg
                 className={Styles.icon}
-                enable-background="new 0 0 32 32"
+                enableBackground="new 0 0 32 32"
                 id="Glyph"
                 version="1.1"
                 viewBox="0 0 32 32"

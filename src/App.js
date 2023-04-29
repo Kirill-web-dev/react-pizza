@@ -19,7 +19,16 @@ export default function App() {
                 <Header />
                 <div className="content">
                     <Routes>
-                        <Route exact path="/" element={<Home searchPizza={searchPizza} setSearchPizza={setSearchPizza} />} />
+                        <Route
+                            exact
+                            path="/"
+                            element={
+                                <Home
+                                    searchPizza={searchPizza}
+                                    setSearchPizza={setSearchPizza}
+                                />
+                            }
+                        />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
