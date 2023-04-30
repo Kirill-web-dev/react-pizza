@@ -23,10 +23,7 @@ export default function App() {
                             exact
                             path="/"
                             element={
-                                <Home
-                                    searchPizza={searchPizza}
-                                    setSearchPizza={setSearchPizza}
-                                />
+                                <Home />
                             }
                         />
                         <Route path="/cart" element={<Cart />} />
