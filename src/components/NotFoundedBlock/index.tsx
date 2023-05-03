@@ -1,10 +1,8 @@
 import React from "react";
 
-import Styles from "./NotFoundedBlock.module.scss"
+import Styles from "./NotFoundedBlock.module.scss";
 
-function NotFoundedBlock() {
-    console.log(Styles.root);
-
+const NotFoundedBlock: React.FC = () => {
     return (
         <div className={Styles.root}>
             <h1>
@@ -15,6 +13,6 @@ function NotFoundedBlock() {
             <p className={Styles.description}>Такой страницы не существует</p>
         </div>
     );
-}
+};
 
 export default NotFoundedBlock;

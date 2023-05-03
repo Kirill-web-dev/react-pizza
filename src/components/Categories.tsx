@@ -1,13 +1,14 @@
 import React from "react";
 
-export default function Categories({ categoryValue, onChangeCategory }) {
-    const listOfCategories = [ 
-        "Все", 
-        "Мясные", 
-        "Вегетарианская", 
-        "Гриль",
-        "Острые", 
-    ];
+type CategoriesProps = {
+    value: number;
+    onChangeCategory: any;
+};
+
+// Типизация пропсов
+
+const Categories: React.FC<CategoriesProps> = ({ value, onChangeCategory }) => {
+    const listOfCategories: string[] = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые"];
 
     return (
         <div className="categories">
@@ -16,7 +17,7 @@ export default function Categories({ categoryValue, onChangeCategory }) {
                     <li
                         key={index}
                         onClick={() => onChangeCategory(index)}
-                        className={categoryValue === index ? "active" : null}
+                        className={value === index ? "active" : ""}
                     >
                         {categoryTitle}
                     </li>
@@ -24,5 +25,6 @@ export default function Categories({ categoryValue, onChangeCategory }) {
             </ul>
         </div>
     );
-}
+};
 
+export default Categories;

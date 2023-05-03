@@ -10,7 +10,7 @@ import { fetchPizzas, selectPizzaData } from "../redux/slices/pizzaSlice";
 import { selectFilter, setCategoryID, setCurrentPage, setFilters } from "../redux/slices/filterSlice";
 import { listSortParams } from "../components/Sorting";
 
-function Home() {
+const Home: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isMounted = React.useRef(false);
@@ -18,12 +18,12 @@ function Home() {
     const { categoryID, sort, currentPage, searchValue } = useSelector(selectFilter);
     const { items, status } = useSelector(selectPizzaData);
 
-    const onChangePage = (number) => {
-        dispatch(setCurrentPage(number));
+    const onChangePage = (page: number) => {
+        dispatch(setCurrentPage(page));
     };
 
-    const onChangeCategory = (id) => {
-        dispatch(setCategoryID(id));
+    const onChangeCategory = (index: number) => {
+        dispatch(setCategoryID(index));
     };
 
     const getPizzas = async () => {
@@ -33,6 +33,7 @@ function Home() {
         const search = searchValue ? `&search=${searchValue}` : "";
 
         dispatch(
+            // @ts-ignore
             fetchPizzas({
                 correctSort,
                 order,
@@ -76,7 +77,7 @@ function Home() {
         }
     }, []);
 
-    const pizzas = items.map((pizza) => (
+    const pizzas = items.map((pizza: any) => (
         <Link
             key={pizza.id}
             to={`/pizzas/${pizza.id}`}
@@ -91,7 +92,7 @@ function Home() {
         <div className="container">
             <div className="content__top">
                 <Categories
-                    categoryValue={categoryID}
+                    value={categoryID}
                     onChangeCategory={onChangeCategory}
                 />
                 <Sorting />
@@ -111,6 +112,6 @@ function Home() {
             />
         </div>
     );
-}
+};
 
 export default Home;
